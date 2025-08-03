@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '21'
-          distribution: 'temurin'  # Corrected distribution name
+          distribution: 'temurin'
 
       # Ensure gradlew is executable
       - name: Make gradlew executable
@@ -40,3 +40,10 @@ jobs:
       # Build with Gradle
       - name: Build with Gradle
         run: ./gradlew build
+
+      # ✅ Upload built jar
+      - name: Upload built jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: argon-jar
+          path: build/libs/*.jar
